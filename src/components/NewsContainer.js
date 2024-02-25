@@ -1,29 +1,30 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import NewsCard from './NewsCard'
+import { useRecoilValue } from 'recoil';
+import { selectCategoryState } from '../atoms/categoryAtom';
 
 const NewsContainer = () => {
-  const [news, setNews] = useState(null)
+  const [news, setNews] = useState(null);
+  const selectedCategory = useRecoilValue(selectCategoryState);
 
-  const newsList = async() => {
-    const newsKey = process.env.REACT_APP_NEWS_API_KEY;
-    const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${newsKey}`)
-    setNews(response.data.articles)
-  }
-
-  console.log('news', news)
-  useEffect(()=>{
+  
+  useEffect(() => {
+    const newsList = async() =>{
+      try{
+        const query = selectedCategory === '경제' ? '' : `&category=${selectedCategory}`
+        const newsKey = process.env.REACT_APP_NEWS_API_KEY;
+        const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=${newsKey}`)
+        setNews(response.data.articles)
+      } catch(error){
+        throw new Error('error happens')
+      }
+    }
     newsList();
-  },[]);
+  }, [selectedCategory])
 
   return (
     <div>
-      {/* {news && <textarea
-          rows={7}
-          value={JSON.stringify(news, null, 2)}
-          readOnly={true}
-        />} */}
-        
         <div>
         {news && (
         <div className="flex flex-wrap justify-center">
