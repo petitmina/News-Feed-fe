@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import NewsItem from "./NewsItem";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { categoryState } from "../atoms/categoryAtom";
 import { newsState } from "../atoms/newsAtom";
 
 const News = () => {
-  const [data, setData] = useRecoilState(newsState);
-  console.log(data, 'check2')
+  const setData = useSetRecoilState(newsState);
   const category = useRecoilValue(categoryState);
 
   const onClick = async (type, param) => {
@@ -32,18 +31,7 @@ const News = () => {
   }, [category]);
 
   return (
-    <div>
-      네이버 뉴스 불러오기
-     
-      {/* {data && (
-        <div className="flex flex-wrap justify-center">
-          {data.map((index) => (
-            <NewsItem key={index} />
-          ))}
-        </div>
-      )} */}
       <NewsItem />
-    </div>
   );
 };
 

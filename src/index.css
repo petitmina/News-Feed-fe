@@ -15,7 +15,7 @@
 }
 
 .card-head {
-  @apply h-[30%] overflow-hidden text-ellipsis 
+  @apply h-[30%] flex justify-center mt-2 overflow-hidden text-ellipsis 
 }
 
 .card-content {
