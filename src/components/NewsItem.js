@@ -1,10 +1,18 @@
 import React from 'react'
 
-const NewsItem = () => {
+const NewsItem = ({item}) => {
+
+
   return (
-    <div>
-      newsItem.js에 뉴스 API를 통해 받아온 정보로 newItem 만들기  
-    </div>
+    <li>
+            <div className="title">
+                <div>{item.title}</div>
+            </div>
+            <div className="cont">
+                <span className="date">{item.pubDate}</span>
+               <div>{item.description}</div>
+            </div>
+        </li>
   )
 }
 

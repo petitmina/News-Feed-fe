@@ -33,17 +33,15 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { newsList } from '../atoms/newsAtom'
+import News from './News'
 
 const NewsList = () => {
-    const news = useRecoilValue(newsList);
+  
 
   return (
     <div>
-      <ul>
-        {news.map((article, index) => (
-          <li key={index}>{article.title}</li>
-        ))}
-      </ul>
+      <h1>네이버 뉴스</h1>
+     
     </div>
   )
 }
