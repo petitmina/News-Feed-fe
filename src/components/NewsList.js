@@ -28,7 +28,7 @@ const NewsList = () => {
 
   useEffect(() => {
     onClick("news", category);
-  }, [category]);
+  }, [category, setData]);
 
   return (
       <NewsItem />

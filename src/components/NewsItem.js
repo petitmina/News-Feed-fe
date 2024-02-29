@@ -4,7 +4,7 @@ import { newsState } from '../atoms/newsAtom';
 
 const NewsItem = () => {
   const newsData = useRecoilValue(newsState);
-
+  
   return (
     <>
       {newsData.map((item, index) => (
