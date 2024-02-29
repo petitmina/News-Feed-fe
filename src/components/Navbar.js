@@ -4,7 +4,7 @@ import { categoryState } from '../atoms/categoryAtom';
 
 const Navbar = () => {
   const [category, setCategory] = useRecoilState(categoryState);
-console.log(category, 'check')
+
   const handleCategoryChange = (newCategory) => {
     setCategory(newCategory);
   };
