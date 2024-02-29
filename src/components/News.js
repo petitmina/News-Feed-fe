@@ -5,7 +5,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { categoryState } from "../atoms/categoryAtom";
 import { newsState } from "../atoms/newsAtom";
 
-const News = () => {
+const NewsList = () => {
   const setData = useSetRecoilState(newsState);
   const category = useRecoilValue(categoryState);
 
@@ -35,4 +35,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default NewsList;
